@@ -60,6 +60,7 @@ Node.js+Express+mongodb3.x开发的博客初级版本
 
 
 ###本人技术博客：
+[逍遥飞鹤的博客](blog.csdn.net/he90227)
 blog.csdn.net/he90227 
 
 ##原作者个人博客
