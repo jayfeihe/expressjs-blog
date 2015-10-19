@@ -1,4 +1,4 @@
-Node.js+Express+mongodb3.x开发的博客初级版本
+Node.js+Express+mongodb3.x开发的博客初级版本,基于WebStorm IDEA开发
 ==============
 
 ##用expressjs开发的个人博客系统
@@ -49,25 +49,26 @@ Node.js+Express+mongodb3.x开发的博客初级版本
       npm install
       node server.js
 
-6.到 /register 下注册
+6.到 IP:3000/register 下注册
   注册成功之后注释掉useRoutes.js的63-66行。
   
-7.到 /admin 下管理博客
+7.到 IP:3000/admin 下管理博客
 
 
 常见错误解析：
-1.> js-bson: Failed to load c++ bson extension, using pure JS version?
-    进入项目，执行npm install bson
-    
+1.>{ [Error: Cannot find module '../build/Release/bson'] code: 'MODULE_NOT_FOUND' }
 
-2.{ [Error: Cannot find module '../build/Release/bson'] code: 'MODULE_NOT_FOUND' }？
-    原因：bson中的bson.js路径不对，可在bson模块中添加文件夹/node_modules/bson/build/Release，
+   js-bson: Failed to load c++ bson extension, using pure JS version
+
+    原因：bson中的bson.js路径不对
     解决方案：
-          将/node_modules/bson/browser_build下的内容copy进来即可
+         Ctrl+Shift+F 全局查找 ../build/Release/bson,找到后
+         修改 node_modules\mongoose\node_modules\mongodb\node_modules\bson\ext中的index.js
+         将两处
+           bson = require('../build/Release/bson');
+         修改为
+           bson = require('../browser_build/bson');
 
 
 ###本人技术博客：
 [逍遥飞鹤的博客](http://blog.csdn.net/he90227)
-
-##原作者个人博客
-[longmenwaideyu.com](http://longmenwaideyu.com)

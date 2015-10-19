@@ -4,15 +4,15 @@ var config = {
     aPageNum: 7,//分页,一页显示多少文章.
     dbUser: 'root',//dbUser填写 '' 说明数据库和本博客在同一台机器
     dbPass: '1234',
-    dbAddress: '111.111.111.111',
+    dbAddress: '192.168.1.120',
     dbPort: '27017',
     dbName: 'blog',
-    ownerName: '龙门外的鱼',//个人姓名，显示在博主信息中
-    ownerLocation: '',//所在地，显示在博主信息中
+    ownerName: '逍遥飞鹤',//个人姓名，显示在博主信息中
+    ownerLocation: '上海',//所在地，显示在博主信息中
     ownerOccupation: '-',//职业，显示在博主信息中
     ownerSkill: '',//主要从事领域与技能，显示在博主信息中
     motto: 'Thoughts, stories and ideas.',//座右铭，显示在博主信息中
-    email: 'longmenwaideyu@126.com',
+    email: '871825513@qq.com',
     serverPlatform: {
         platform: 'local',
         AccessKey: 'xxx',//platform是local可以不填
@@ -27,12 +27,12 @@ var config = {
         }
     },
     otherBlog: {//你的其他博客，显示在页脚
-        url: 'http://hi.baidu.com/longmenwaideyu',
-        name: '百度博客'
+        url: 'http://blog.csdn.com/he90227',
+        name: 'CSDN博客'
     },
     friendlyLinks: [//友情链接，显示在页脚
         { url: 'http://hi.baidu.com/longmenwaideyu', name : '百度博客' }
     ],
-    ICPNumber: '京ICP备00000000号'//显示在页脚
+    ICPNumber: '沪ICP备00000000号'//显示在页脚
 }
 module.exports = config;
