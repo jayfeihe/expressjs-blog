@@ -1,4 +1,4 @@
-﻿expressjs-blog(初步定名为FishBlog)
+Node.js+Express+mongodb3.x开发的博客初级版本
 ==============
 
 ##用expressjs开发的个人博客系统
@@ -19,26 +19,48 @@
 4. seo优化目前只是雏形，继续深入开发。
 5. 文章所在文集下的上一篇和下一篇文章
 
-###1.安装mongodb和node
-    sudo apt-get install mongo
-    #node安装请自行百度
-###2.执行以下四条命令
-    mongo
-    use blog
-    db.addUser("root","1234")
-    db.auth("root","1234");
+###项目启动流程：
+1.安装并启动mongodb
+   E:\mongodb\bin>mongod --dbpath=E:\mongodb\db
+2.启动mongodb客户端
+   E:\mongodb\bin>mongo
+3.创建数据库和相关文件(创建mongodb的新用户并授权)
+   show dbs
+   use blog
+     db.createUser(
+           {
+             user: "root",
+             pwd: "1234",
+             roles: [ "readWrite", "dbAdmin" ]
+           }
+        )
+   db.auth("root","1234");
+4.配置 common/config.js文件
+      dbName 为 blog
+      dbUser 为 root
+      dbPass 为 1234
+      dbAddress 为 mongodb所在机器IP
+  注mongodb默认不能远程连接，如果需要远程连接，要更改mongo的配置。如果在本机连接，dbUser, dbPass不要填。
+5.执行
+      npm install
+      node server.js
+6.到 /register 下注册
+  注册成功之后注释掉useRoutes.js的63-66行。
+7.到 /admin 下管理博客
 
-###3.配置 common/config.js文件
-    dbName 为 blog
-    dbUser 为 root
-    dbPass 为 1234
-    dbAddress 为 mongodb所在机器IP
-注mongodb默认不能远程连接，如果需要远程连接，要更改mongo的配置。如果在本机连接，dbUser, dbPass不要填。
-###4.执行
-    npm install
-    node server.js
-###5.到 /register 下注册
-注册成功之后注释掉useRoutes.js的63-66行。
-###6.到 /admin 下管理博客
-##作者个人博客
+
+常见错误解析：
+1.> js-bson: Failed to load c++ bson extension, using pure JS version?
+    进入项目，执行npm install bson
+
+2.{ [Error: Cannot find module '../build/Release/bson'] code: 'MODULE_NOT_FOUND' }？
+    原因：bson中的bson.js路径不对，可在bson模块中添加文件夹/node_modules/bson/build/Release，
+    解决方案：
+          将/node_modules/bson/browser_build下的内容copy进来即可
+
+
+###本人技术博客：
+blog.csdn.net/he90227 
+
+##原作者个人博客
 [longmenwaideyu.com](http://longmenwaideyu.com)
